@@ -53,40 +53,40 @@
 		int i = 0;
 		while (WiFi.status() != WL_CONNECTED && i <= 15) 
 		{
-		delay(500);
-		Serial.print(".");
-		i++;
+			delay(500);
+			Serial.print(".");
+			i++;
 		}
 
-		if(i == 15)
+		if(i >= 16)
 		{
-		WiFi.mode(WIFI_AP);
-		delay(100);
+			WiFi.mode(WIFI_AP);
+			delay(100);
 
-		IPAddress localIp(192,168,1,1);
-		IPAddress gateway(192,168,1,1);
-		IPAddress subnet(255,255,255,0);
+			IPAddress localIp(192,168,1,1);
+			IPAddress gateway(192,168,1,1);
+			IPAddress subnet(255,255,255,0);
 
-		WiFi.softAPConfig(localIp, gateway, subnet);
-		WiFi.softAP(_ssid);
+			WiFi.softAPConfig(localIp, gateway, subnet);
+			WiFi.softAP(_ssid);
 
-		IPAddress IP = WiFi.softAPIP();
+			IPAddress IP = WiFi.softAPIP();
 
-		WiFi.softAPIP();
-		Serial.print("AP IP address: ");
-		Serial.println(IP);
+			WiFi.softAPIP();
+			Serial.print("AP IP address: ");
+			Serial.println(IP);
 
-		this->Mode = MODE_WIFI_AP;
-	}   
-	else
-	{
-		Serial.println("");
-		Serial.print("IP address: ");
+			this->Mode = MODE_WIFI_AP;
+		}   
+		else
+		{
+			Serial.println("");
+			Serial.print("IP address: ");
 
-		IPAddress IP = WiFi.localIP();
-		Serial.println(IP);
+			IPAddress IP = WiFi.localIP();
+			Serial.println(IP);
 
-		this->Mode = MODE_WIFI_STA;
+			this->Mode = MODE_WIFI_STA;
 		}
 	}
 

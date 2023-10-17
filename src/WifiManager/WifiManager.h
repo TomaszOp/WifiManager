@@ -12,6 +12,7 @@
 #define MODE_WIFI_STA 1
 #define MODE_WIFI_AP  2
 
+
 class WifiManager
 {
 	public:
